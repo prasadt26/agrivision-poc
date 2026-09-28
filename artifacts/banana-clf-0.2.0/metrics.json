@@ -1,0 +1,201 @@
+{
+  "version": "banana-clf-0.2.0",
+  "split": {
+    "train": {
+      "images": 3798,
+      "groups": 1224
+    },
+    "val": {
+      "images": 1293,
+      "groups": 422
+    },
+    "test": {
+      "images": 1609,
+      "groups": 383
+    }
+  },
+  "class_weight_power": 0.5,
+  "epochs": 20,
+  "test_macro_f1": 0.634,
+  "test_accuracy": 0.6426,
+  "ece_before_calibration": 0.1895,
+  "ece_after_calibration": 0.2127,
+  "temperature": 0.883,
+  "per_class": {
+    "bacterial_soft_rot": {
+      "precision": 0.2838,
+      "recall": 0.9255,
+      "f1-score": 0.4344,
+      "support": 161.0
+    },
+    "banana_aphids": {
+      "precision": 0.6562,
+      "recall": 0.9767,
+      "f1-score": 0.785,
+      "support": 43.0
+    },
+    "banana_fruit_scarring_beetle": {
+      "precision": 0.8485,
+      "recall": 0.6829,
+      "f1-score": 0.7568,
+      "support": 41.0
+    },
+    "black_sigatoka": {
+      "precision": 0.7188,
+      "recall": 0.4132,
+      "f1-score": 0.5247,
+      "support": 167.0
+    },
+    "panama_disease": {
+      "precision": 0.2167,
+      "recall": 0.8667,
+      "f1-score": 0.3467,
+      "support": 15.0
+    },
+    "potassium_deficiency": {
+      "precision": 0.9085,
+      "recall": 0.9763,
+      "f1-score": 0.9412,
+      "support": 295.0
+    },
+    "pseudostem_weevil": {
+      "precision": 0.9819,
+      "recall": 0.4667,
+      "f1-score": 0.6327,
+      "support": 812.0
+    },
+    "yellow_sigatoka": {
+      "precision": 0.5156,
+      "recall": 0.88,
+      "f1-score": 0.6502,
+      "support": 75.0
+    }
+  },
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 3.292073742222196,
+      "val_macro_f1": 0.1737,
+      "seconds": 40.0
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.72683745525334,
+      "val_macro_f1": 0.2541,
+      "seconds": 39.9
+    },
+    {
+      "epoch": 3,
+      "train_loss": 1.754866118491355,
+      "val_macro_f1": 0.6432,
+      "seconds": 43.4
+    },
+    {
+      "epoch": 4,
+      "train_loss": 1.1310733579974102,
+      "val_macro_f1": 0.7386,
+      "seconds": 43.6
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.938939419214571,
+      "val_macro_f1": 0.77,
+      "seconds": 43.6
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.8848905895433029,
+      "val_macro_f1": 0.8009,
+      "seconds": 43.7
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.8414452220654098,
+      "val_macro_f1": 0.7998,
+      "seconds": 44.1
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.7844580606198926,
+      "val_macro_f1": 0.8317,
+      "seconds": 44.0
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.7665376844313221,
+      "val_macro_f1": 0.8221,
+      "seconds": 44.1
+    },
+    {
+      "epoch": 10,
+      "train_loss": 0.7540821238151659,
+      "val_macro_f1": 0.8226,
+      "seconds": 43.7
+    },
+    {
+      "epoch": 11,
+      "train_loss": 0.7487904299178081,
+      "val_macro_f1": 0.8278,
+      "seconds": 44.6
+    },
+    {
+      "epoch": 12,
+      "train_loss": 0.7255758511323311,
+      "val_macro_f1": 0.8383,
+      "seconds": 44.0
+    },
+    {
+      "epoch": 13,
+      "train_loss": 0.7030073532058793,
+      "val_macro_f1": 0.8363,
+      "seconds": 43.6
+    },
+    {
+      "epoch": 14,
+      "train_loss": 0.702513723796515,
+      "val_macro_f1": 0.8398,
+      "seconds": 43.7
+    },
+    {
+      "epoch": 15,
+      "train_loss": 0.6974641954101595,
+      "val_macro_f1": 0.8253,
+      "seconds": 42.8
+    },
+    {
+      "epoch": 16,
+      "train_loss": 0.709017758309182,
+      "val_macro_f1": 0.8458,
+      "seconds": 43.5
+    },
+    {
+      "epoch": 17,
+      "train_loss": 0.6998722189473378,
+      "val_macro_f1": 0.8358,
+      "seconds": 44.3
+    },
+    {
+      "epoch": 18,
+      "train_loss": 0.6989911040109732,
+      "val_macro_f1": 0.8477,
+      "seconds": 44.0
+    },
+    {
+      "epoch": 19,
+      "train_loss": 0.6819402124456131,
+      "val_macro_f1": 0.8347,
+      "seconds": 44.1
+    },
+    {
+      "epoch": 20,
+      "train_loss": 0.6918137468056279,
+      "val_macro_f1": 0.8436,
+      "seconds": 44.3
+    }
+  ],
+  "caveats": [
+    "Measured on a held-out group split of the public PFSD-Musa dataset, not on field photos. Expect a drop on phone images of a real canopy.",
+    "Source images are 256x256, already downsampled; fine lesion detail is partly gone, so early-stage Sigatoka performance is understated here and unvalidated at full resolution.",
+    "No healthy and no not-a-leaf class exists in this dataset, so the model assigns one of 8 diseases to every image, including a photo of a shoe."
+  ]
+}

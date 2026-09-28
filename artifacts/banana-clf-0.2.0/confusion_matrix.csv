@@ -1,0 +1,9 @@
+,bacterial_soft_rot,banana_aphids,banana_fruit_scarring_beetle,black_sigatoka,panama_disease,potassium_deficiency,pseudostem_weevil,yellow_sigatoka
+bacterial_soft_rot,149,0,0,0,1,1,6,4
+banana_aphids,0,42,0,0,0,0,0,1
+banana_fruit_scarring_beetle,0,0,28,13,0,0,0,0
+black_sigatoka,12,17,3,69,2,26,0,38
+panama_disease,1,0,0,0,13,0,0,1
+potassium_deficiency,0,0,0,4,0,288,1,2
+pseudostem_weevil,359,3,2,9,42,2,379,16
+yellow_sigatoka,4,2,0,1,2,0,0,66

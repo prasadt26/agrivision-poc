@@ -1,0 +1,20 @@
+# Deploy dependencies for the Streamlit app (inference only).
+# The full training set lives in pyproject.toml — sklearn, tqdm and pyarrow are
+# deliberately absent here because streamlit_app.py and common.py never import them.
+#
+# torch and torchvision are pinned to their "+cpu" local builds on purpose. The plain
+# PyPI wheel for Linux drags in ~2.5 GB of NVIDIA CUDA libraries, which a Streamlit
+# Cloud container has no GPU to use and not enough disk to hold. The "+cpu" version tag
+# exists only on the PyTorch index below, so the exact pin is what forces the small
+# wheel. Wheels are published for cp310–cp315, so any Python version Cloud offers works.
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+torch==2.14.0+cpu
+torchvision==0.29.0+cpu
+
+timm>=1.0.9
+streamlit>=1.38
+pillow>=10.3
+pandas>=2.2
+numpy>=1.26
+matplotlib>=3.9   # pandas Styler.background_gradient, confusion-matrix view only

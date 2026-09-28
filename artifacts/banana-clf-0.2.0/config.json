@@ -1,0 +1,16 @@
+{
+  "version": "banana-clf-0.2.0",
+  "arch": "efficientnet_b0",
+  "image_size": 224,
+  "labels": [
+    "bacterial_soft_rot",
+    "banana_aphids",
+    "banana_fruit_scarring_beetle",
+    "black_sigatoka",
+    "panama_disease",
+    "potassium_deficiency",
+    "pseudostem_weevil",
+    "yellow_sigatoka"
+  ],
+  "temperature": 0.883
+}

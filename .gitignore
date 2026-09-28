@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+train.log
+streamlit.log
+
+# data/ and artifacts/ ARE tracked: the deployed Streamlit app loads the weights from
+# artifacts/, and the "Dataset sample" tab reads data/manifest.csv. Do not re-ignore
+# them without checking what the app needs at runtime.
+
+# Redundant with the extracted artifacts/banana-clf-0.2.0/ — don't ship the weights twice.
+banana-clf-0.2.0.zip
