@@ -13,8 +13,11 @@ torch==2.14.0+cpu
 torchvision==0.29.0+cpu
 
 timm>=1.0.9
-streamlit>=1.38
+streamlit>=1.64   # width='stretch' replaced use_container_width, removed after 2025-12-31
 pillow>=10.3
 pandas>=2.2
 numpy>=1.26
-matplotlib>=3.9   # pandas Styler.background_gradient, confusion-matrix view only
+
+# No matplotlib on purpose. The confusion-matrix heatmap used to rely on pandas'
+# Styler.background_gradient, which imports it; streamlit_app.green_shade now emits the
+# same CSS in pure Python, so the deploy has one less package that can fail to install.

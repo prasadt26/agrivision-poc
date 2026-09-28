@@ -52,6 +52,25 @@ def find_artifacts() -> list[str]:
     return [str(d) for d in sorted(ARTIFACTS.glob("*")) if (d / "config.json").exists()]
 
 
+def green_shade(df: pd.DataFrame) -> pd.DataFrame:
+    """Heatmap CSS for the confusion matrix, without matplotlib.
+
+    pandas' Styler.background_gradient imports matplotlib, which is a whole plotting
+    stack pulled in for one colour ramp — and one more thing that can be missing in a
+    deployed environment. The sqrt keeps small off-diagonal counts visible; on a matrix
+    this skewed a linear ramp washes the confusions out, and the confusions are the
+    reason anyone opens this table.
+    """
+    vmax = float(df.to_numpy().max()) or 1.0
+
+    def css(v) -> str:
+        t = (float(v) / vmax) ** 0.5
+        r, g, b = round(247 - 220 * t), round(252 - 160 * t), round(245 - 200 * t)
+        return f"background-color: rgb({r},{g},{b}); color: {'#fff' if t > 0.55 else '#111'}"
+
+    return df.map(css)
+
+
 # ------------------------------------------------------------------ sidebar
 
 artifacts = find_artifacts()
@@ -101,7 +120,7 @@ tab_upload, tab_sample, tab_detail = st.tabs(["Upload", "Dataset sample", "Model
 def show_result(img: Image.Image, truth: str | None = None) -> None:
     left, right = st.columns([1, 1.15], gap="medium")
     with left:
-        st.image(img, use_container_width=True)
+        st.image(img, width='stretch')
     with right:
         result = clf.predict(img, top_k=len(clf.labels))
         d = result["diagnosis"]
@@ -154,7 +173,7 @@ with tab_detail:
             pd.DataFrame(per).T.rename(columns={
                 "precision": "Precision", "recall": "Recall",
                 "f1-score": "F1", "support": "Images"}),
-            use_container_width=True,
+            width='stretch',
         )
         st.caption("Low-support classes (Panama disease has ~100 images total) carry "
                    "unreliable numbers however good they look.")
@@ -164,8 +183,8 @@ with tab_detail:
             st.subheader("Confusion matrix")
             st.caption("Rows = dataset label, columns = prediction.")
             cm = pd.read_csv(cm_path, index_col=0)
-            st.dataframe(cm.style.background_gradient(cmap="Greens", axis=None),
-                         use_container_width=True)
+            st.dataframe(cm.style.apply(green_shade, axis=None),
+                         width='stretch')
 
         st.subheader("Split")
-        st.dataframe(pd.DataFrame(metrics.get("split", {})).T, use_container_width=True)
+        st.dataframe(pd.DataFrame(metrics.get("split", {})).T, width='stretch')
